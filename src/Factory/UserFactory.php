@@ -3,7 +3,6 @@
 namespace App\Factory;
 
 use App\Entity\User;
-use App\Utils\Functions;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
 
