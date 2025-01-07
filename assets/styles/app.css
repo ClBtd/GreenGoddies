@@ -1,4 +1,8 @@
+/* Polices */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Général */
 
 html, body {
     margin: 0;
@@ -24,6 +28,93 @@ footer {
 main {
     min-height: 80vh;
 }
+
+/* Page d'accueil */
+
+.presentation {
+    background-color: #E8F0E3;
+}
+
+.presentation h1 {
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.presentation p {
+    font-size: 1.1rem;
+}
+
+.products h2 {
+    font-size: 0.9rem;
+    margin-left: 5%;
+}
+
+.informations {
+    text-align: center;
+}
+
+.products h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.products p {
+    font-size: 0.9rem;
+}
+
+.products .description {
+    color: #666666;
+}
+
+.products a {
+    color: black;
+    font-size: 0.9rem;
+    text-decoration: none;
+    padding-top: 20%;
+}
+
+.conviction {
+    background-color: #EBE3D3;
+}
+
+.valeurs h2 {
+    font-size: 1.2rem;
+}
+
+.valeurs p {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* Page de détail d'un produit */
+
+.detail h1 {
+    font-size: 1.2rem;
+}
+
+.detail h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.detail h3 {
+    font-size: 0.6rem;
+    color: #666666;
+}
+
+.detail p {
+    color: #666666;
+}
+
+.detail a {
+    background-color: #565656;
+    border: 1px solid black;
+    font-size: 0.9rem;
+    color: white;
+    text-decoration: none;
+}
+
+/* Formulaires de connexion et d'inscription */
 
 .form-title {
     font-size: 1.2rem;
@@ -70,3 +161,4 @@ label {
     font-weight: 500;
     color: #d31548;
 }
+

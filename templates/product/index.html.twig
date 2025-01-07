@@ -3,18 +3,61 @@
 {% block title %}GreenGoodies{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/clementinebertrand/GreenGoodies/src/Controller/ProductController.php</code></li>
-        <li>Your template at <code>/Users/clementinebertrand/GreenGoodies/templates/product/index.html.twig</code></li>
-    </ul>
+<div class="presentation d-flex">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-6">
+            <h1 class="pb-3">Bienvenue</h1>
+            <p class="my-4">Découvrez notre univers de produits durables et éthiques pour une consommation responsable.</p>
+            <p>Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt à porter.</p>
+        </div>
+    </div>
+    <img src="{{ asset('img/presentation.png') }}" alt="Image de décoration" aria-hidden="true">
 </div>
+
+<div class="products row g-0">
+    <h2 class="my-4">NOS PRODUITS</h2>
+    {% for product in products %}
+        <div class="col-4">
+            <img src="{{ asset('img/' ~ product.picture) }}" alt="Image du produit {{product.name}}" class="img-fluid">
+            <div class="informations py-5">
+                <h3>{{product.name}}</h3>
+                <p class="description px-3">{{product.shortDescription}}</p>
+                <p class="pt-1 pb-5">{{product.price|number_format(2, ',')}} €</p>
+                <a href="{{url('app_product_detail', {id: product.id} )}}">Voir le produit</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="conviction valeurs d-flex">
+    <div class="row">
+        <div class="col-8 d-flex">
+            <div class="row align-items-end ps-4 pb-4">
+                <div class="col-6">
+                    <h2 class="ps-2">NOTRE CONVICTION</h2>
+                    <p class="ps-2">Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants. Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique.</p>
+                </div>
+            </div>
+        </div>
+        <img src="{{ asset('img/connexion.png') }}" alt="Image de décoration" aria-hidden="true" class="col-4">
+    </div>
+</div>
+
+<div class="presentation valeurs">
+    <div class="row">
+        <img src="{{ asset('img/valeurs.png') }}" alt="Image de décoration" aria-hidden="true" class="col-4">
+        <div class="col-8 d-flex">
+            <div class="row w-100 justify-content-end align-items-end pb-5">
+                <div class="col-6">
+                    <h2>NOS VALEURS</h2>
+                    <p class="mb-0 pe-2">Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité.</p>
+                    <p class="mb-0 pe-2">Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques.</p>
+                    <p class="mb-0 pe-2">Écologie : Nous encourageons des pratiques respectueuses de l'écosystème et privilégions les matériaux écologiques.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

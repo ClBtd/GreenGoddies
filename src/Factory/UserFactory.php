@@ -3,10 +3,9 @@
 namespace App\Factory;
 
 use App\Entity\User;
+use App\Utils\Functions;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
-
-use function App\Utils\normalizeString;
 
 /**
  * @extends PersistentProxyObjectFactory<User>
@@ -50,7 +49,7 @@ final class UserFactory extends PersistentProxyObjectFactory
     {
         return $this
         ->afterInstantiate(function(User $user): void {
-            $user->setEmail(normalizeString($user->getFirstName() . '.' . $user->getLastName()) . '@example.com');
+            $user->setEmail(Functions::normalizeString($user->getFirstName() . '.' . $user->getLastName()) . '@example.com');
         });
     }
 }

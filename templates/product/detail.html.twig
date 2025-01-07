@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{product.name}}{% endblock %}
+
+{% block body %}
+
+    <div class="row mb-5 pb-5">
+
+        <img class="col-6" src="{{ asset('img/' ~ product.picture) }}" alt="Image du produit {{product.name}}">
+
+        <div class="detail col-6 pt-5 px-5 d-flex flex-column justify-content-between">
+            <div class="px-5 pt-4">
+                <h1 class="py-2">{{product.name}}</h1>
+                <h2 class="py-2">{{product.price | number_format(2 , ',')}} €</h2>
+                <h3 class="pt-5 pb-2">DESCRIPTION</h3>
+                <p>{{product.longDescription | nl2br}}</p>
+            </div>
+            <div class="px-5 row">
+                <a href="#" class="col-12 text-center py-4">Ajouter au panier</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
