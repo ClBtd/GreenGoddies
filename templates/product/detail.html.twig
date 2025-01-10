@@ -15,8 +15,24 @@
                 <h3 class="pt-5 pb-2">DESCRIPTION</h3>
                 <p>{{product.longDescription | nl2br}}</p>
             </div>
-            <div class="px-5 row">
-                <a href="#" class="col-12 text-center py-4">Ajouter au panier</a>
+            <div class="px-5 row d-flex">
+                {% if app.user %}
+                    {{ form_errors(form) }}
+
+                    {{ form_start(form) }}
+                    <div class="d-flex justify-content-center align-items-center">
+                        {{form_widget(form)}}
+                        {% if form.quantity.vars.value %}
+                        <button type="submit" class="classic-btn text-center p-4">Mettre à jour</button>
+                        {% else %}
+                            <button type="submit" class="classic-btn text-center p-4">Ajouter au panier</button>
+                        {% endif %}
+                    </div>
+                    {{ form_end(form)}}
+
+                {% else %}
+                    <a href="{{url('app_login')}}" class="col-12 text-center px-4 classic-btn">Ajouter au panier</a>
+                {% endif %}
             </div>
         </div>
 
