@@ -17,6 +17,7 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
+    // Récupère la commande en cours
     public function findPendingOrderByUser(User $user): ?Order
     {
         return $this->createQueryBuilder('o')
@@ -28,20 +29,18 @@ class OrderRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    //    /**
-    //     * @return Order[] Returns an array of Order objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('o')
-    //            ->andWhere('o.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('o.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    //Récupère les commandes validées
+    public function findCompletedOrdersByUser(User $user): array
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.userId = :user')
+            ->andWhere('o.status = :status')
+            ->setParameter('user', $user)
+            ->setParameter('status', false)
+            ->orderBy('o.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
     //    public function findOneBySomeField($value): ?Order
     //    {

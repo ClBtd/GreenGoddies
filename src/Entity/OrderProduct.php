@@ -25,9 +25,6 @@ class OrderProduct
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $quantity = null;
 
-    #[ORM\Column]
-    private ?float $price = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -65,18 +62,6 @@ class OrderProduct
     public function setQuantity(int $quantity): static
     {
         $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): static
-    {
-        $this->price = $price;
 
         return $this;
     }

@@ -42,7 +42,7 @@ final class UserFactory extends PersistentProxyObjectFactory
         ];
     }
 
-    /**
+    /** Création de l'email à partir des noms générés
      * @see https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#initialization
      */
     protected function initialize(): static

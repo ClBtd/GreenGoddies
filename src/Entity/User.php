@@ -47,6 +47,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'userId', orphanRemoval: true)]
     private Collection $orders;
 
+    #[ORM\Column]
+    private bool $statusAPI = false;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -177,6 +180,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $order->setUserId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isStatusAPI(): ?bool
+    {
+        return $this->statusAPI;
+    }
+
+    public function setStatusAPI(bool $statusAPI): static
+    {
+        $this->statusAPI = $statusAPI;
 
         return $this;
     }

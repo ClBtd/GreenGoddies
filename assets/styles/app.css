@@ -178,7 +178,29 @@ main {
     font-size: 0.8rem;
 }
 
+/* Compte utilisateur */
 
+.order th {
+    color: #666666;
+    font-size: 0.9rem;
+}
+
+.order tr {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.order thead tr {
+    border-bottom: none;
+}
+
+.order tr:last-of-type {
+    border-bottom: none;
+}
+
+.order td {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
 
 /* Formulaires de connexion et d'inscription */
 

@@ -29,14 +29,14 @@
             <div class="col-4 offset-8 py-3">
                 <div class="d-flex align-items-center">
                     <h2 class="m-0">Total panier :</h2>
-                    <h3 class="p-2 m-0">{{total|number_format(2, ',')}} €</h3>
+                    <h3 class="p-2 m-0">{{order.totalPrice|number_format(2, ',')}} €</h3>
                 </div>
                 <p>Frais de livraison : Offerts</p>
             </div>
         </div>
 
         <div class="row mt-4">
-            <a href="#" class="classic-btn col-8 offset-2 text-center py-4">Valider la commande</a>
+            <a href="{{url('app_cart_validate', {id: order.id})}}" class="classic-btn col-8 offset-2 text-center py-4">Valider la commande</a>
         </div>
 
     {% else %}
