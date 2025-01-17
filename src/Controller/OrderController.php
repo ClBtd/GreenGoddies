@@ -69,6 +69,7 @@ class OrderController extends AbstractController
         $em->persist($order);
         $em->flush();
 
+        $this->addFlash('success', 'La commande a été validée.');
         return $this->redirectToRoute('app_account');
     }
 

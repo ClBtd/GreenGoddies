@@ -1,0 +1,95 @@
+GreenGoodies
+
+Ce projet est une application web développée avec le framework Symfony. Il comprend entre autre :
+
+    Une partie API pour exposer certaines fonctionnalités.
+    Des fixtures gérées avec Zenstruck Foundry pour simplifier le développement.
+
+Prérequis :
+
+    PHP 8.1 ou supérieur
+    Composer 2.0 ou supérieur
+    MySQL/MariaDB ou un autre système de base de données compatible avec Doctrine
+    Serveur web (Apache/Nginx ou le serveur Symfony)
+
+Installation :
+
+1. Cloner le dépôt
+
+git clone <https://github.com/ClBtd/GreenGoodies>
+cd <GreenGoodies>
+
+2. Installer les dépendances PHP
+
+composer install
+
+3. Configurer l'environnement
+
+Copiez le fichier .env en .env.local et configurez vos variables d'environnement :
+
+Modifiez les informations de connexion à la base de données dans .env.local :
+
+DATABASE_URL="mysql://<username>:<password>@127.0.0.1:3306/<database_name>"
+
+4. Configurer la base de données
+
+Créez la base de données et appliquez les migrations :
+
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+
+5. Charger les fixtures
+
+Ce projet utilise Zenstruck Foundry pour générer des fixtures pour les produits et les utilisateurs. Pour charger les données :
+
+php bin/console doctrine:fixtures:load
+
+Pour personnaliser les données, modifiez ou ajoutez des factories dans src/Factory.
+
+6. Démarrer le serveur Symfony
+
+symfony server:start
+
+Accédez à l'application à l'adresse indiquée.
+
+Utilisation de l'API :
+
+Endpoints disponibles
+
+    POST /api/login : Authentification et récupération du token JWT. Attention, l'accès API doit être activé dans les rôles de l'utilisateur, ce n'est pas le cas à la création des fixtures.
+    GET /api/products : Récupération de données .
+
+Authentification
+
+    Authentifiez-vous avec votre email et mot de passe en envoyant une requête POST à /api/login :
+
+{
+    "email": "user@example.com",
+    "password": "password"
+}
+
+Un token JWT sera renvoyé en réponse :
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+
+Utilisez ce token dans les requêtes suivantes en tant que Authorization header :
+
+    Authorization: Bearer <TOKEN>
+
+Dépannage
+
+    Problème de token JWT : Assurez-vous que votre utilisateur dispose des rôles nécessaires (API_ACCESS).
+    Fixtures non chargées : Vérifiez que votre base de données est correctement configurée et que les migrations ont été exécutées.
+    Erreur de connexion : Vérifiez les variables d'environnement dans .env.local.
+
+Ressources supplémentaires
+
+    Documentation Symfony
+    LexikJWTAuthenticationBundle
+    Zenstruck Foundry
+
+Contributrice
+
+    Bertrand Clémentine - GitHub : ClBtd

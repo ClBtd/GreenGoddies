@@ -12,6 +12,13 @@
 
         <div class="order p-5 row">
 
+            {% for type, message in app.flashes %}
+
+            <div class="alert alert-{{ type }} text-center">
+                {{message | join('. ')}}
+            </div>
+            {% endfor %}
+
             <h2 class="p-3">Mes commandes</h2>
 
             {% if orders %}
